@@ -1,0 +1,5 @@
+.profile__info {
+  width: 336px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
