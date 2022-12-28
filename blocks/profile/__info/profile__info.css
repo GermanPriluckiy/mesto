@@ -1,5 +1,9 @@
 .profile__info {
   width: 336px;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 294px 24px;
+  column-gap: 18px;
+  row-gap: 16px;
+  margin: 22px 244px 25px 30px;
+
 }
