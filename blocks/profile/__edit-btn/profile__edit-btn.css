@@ -7,5 +7,11 @@
   box-sizing: border-box;
   margin-top: 15px;
   padding: 0;
+  transition: 0.3s;
 
+}
+
+.profile__edit-btn:hover {
+  opacity: 0.6;
+  cursor: pointer;
 }

@@ -1,0 +1,15 @@
+.like-btn {
+  margin: 5px 5px 0 0;
+  width: 22px;
+  height: 19px;
+  background-image: url(../../images/like-btn.svg);
+  border-style: none;
+  transition: 0.3S;
+
+
+}
+
+.like-btn:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
