@@ -12,11 +12,13 @@
     <img class="header__logo" src="./images/logo.svg" alt="Лого Сайта">
   </header>
   <section class="profile">
-    <img class="profile__avatar" src="./images/avatar.jpg" alt="Фотография пользователя">
-    <div class="profile__info">
-      <h1 class="profile__name">Жак-Ив Кусто</h1>
-      <button class="profile__edit-btn"></button>
-      <p class="profile__job">Исследователь океана</p>
+    <div class="profile__container">
+      <img class="profile__avatar" src="./images/avatar.jpg" alt="Фотография пользователя">
+      <div class="profile__info">
+        <h1 class="profile__name">Жак-Ив Кусто</h1>
+        <button class="profile__edit-btn"></button>
+        <p class="profile__job">Исследователь океана</p>
+      </div>
     </div>
     <button class="add-btn"></button>
   </section>
@@ -25,7 +27,7 @@
       <img class="places__card-photo" src="./images/karachaevsk.jpg" alt="">
       <div class="places__card-footer">
         <h2 class="places__card-title">Карачаевск</h2>
-        <button class="like-btn like-btn_status_active"></button>
+        <button class="like-btn"></button>
       </div>
     </div>
     <div class="places__card">
@@ -59,13 +61,24 @@
     <div class="places__card">
       <img class="places__card-photo" src="./images/karachaevsk.jpg" alt="">
       <div class="places__card-footer">
-        <h2 class="places__card-title">Карачаево-Черкесия</h2>
-        <button class="like-btn like-btn_status_active"></button>
+        <h2 class="places__card-title">Карачаево-Черкессия</h2>
+        <button class="like-btn"></button>
       </div>
     </div>
   </section>
   <footer class="footer">
     <p class="footer__copyright">&#169; 2022 Mesto Russia</p>
   </footer>
+  <section class="popup">
+    <div class="popup__grid">
+      <form class="popup__container">
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <input class="popup__input-name">
+        <input class="popup__input-job">
+        <button class="popup__save-btn">Сохранить</button>
+      </form>
+      <button class="popup__close-btn"></button>
+  </div>
+  </section>
 </body>
 </html>
