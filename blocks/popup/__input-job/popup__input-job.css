@@ -10,3 +10,11 @@
   color: black;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
+
+@media screen and (max-width: 520px) {
+  .popup__input-job {
+    width: 238px;
+    height: 27px;
+    margin: 0 auto 45px;
+  }
+}

@@ -4,3 +4,13 @@
   line-height: 114%;
   margin: 0;
 }
+
+
+@media screen and (max-width: 420px) {
+  .profile__name {
+    font-weight: 500;
+    font-size: 27px;
+    line-height: 1.2;
+    justify-self: center;
+  }
+}

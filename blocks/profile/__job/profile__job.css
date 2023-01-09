@@ -3,3 +3,17 @@
   line-height: 1.2;
   margin: 0;
 }
+
+@media screen and (max-width: 766px) {
+  .profile__job {
+    justify-self: center;
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .profile__job {
+    font-size: 14px;
+  }
+}

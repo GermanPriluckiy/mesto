@@ -7,3 +7,31 @@
   row-gap: 20px;
 
 }
+
+@media screen and (max-width: 1080px) {
+  .places {
+    max-width: calc(100% - 200px);
+  }
+}
+
+@media screen and (max-width: 880px) {
+  .places {
+    max-width: calc(100% - 50px);
+  }
+}
+
+@media screen and (max-width: 766px) {
+  .places {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .places {
+    grid-template-columns: 1fr;
+    max-width: calc(100% - 38px);
+    margin: 0 auto 48px;
+  }
+}
+
+

@@ -7,8 +7,7 @@ const inputName = popupContainer.querySelector('.popup__input-name');
 const inputJob = popupContainer.querySelector('.popup__input-job');
 const editBtn = profile.querySelector('.profile__edit-btn');
 const popup = document.querySelector('.popup');
-const popupGrid = document.querySelector('.popup__grid');
-const closeBtn = popupGrid.querySelector('.popup__close-btn');
+const closeBtn = popupContainer.querySelector('.popup__close-btn');
 
 function popupMenuOpen() {
   popup.classList.remove('popup__close');
