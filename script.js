@@ -10,13 +10,13 @@ const popup = document.querySelector('.popup');
 const closeBtn = popupContainer.querySelector('.popup__close-btn');
 
 function popupMenuOpen() {
-  popup.classList.remove('popup__close');
+  popup.classList.remove('popup_closed');
   inputName.setAttribute('value', profileName.textContent);
   inputJob.setAttribute('value', profileJob.textContent);
 }
 
 function popupMenuClose() {
-  popup.classList.add('popup__close');
+  popup.classList.add('popup_closed');
 }
 
 function handleFormSubmit (evt) {
