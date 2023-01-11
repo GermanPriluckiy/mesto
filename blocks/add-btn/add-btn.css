@@ -18,8 +18,15 @@
   cursor: pointer;
 }
 
+@media screen and (max-width: 766px) {
+  .add-btn {
+    margin-top: 36px;
+  }
+}
+
 @media screen and (max-width: 420px) {
   .add-btn {
     min-width: 100%;
+    margin-top: 0;
   }
 }
