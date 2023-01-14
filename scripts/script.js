@@ -10,8 +10,8 @@ const closeBtn = popupContainer.querySelector('.profile-edit__close-btn');
 
 function popupMenuOpen() {
   popup.classList.add('popup_opened');
-  inputName.setAttribute('value', profileName.textContent);
-  inputJob.setAttribute('value', profileJob.textContent);
+  inputName.value = profileName.textContent;
+  inputJob.value = profileJob.textContent;
 }
 
 function popupMenuClose() {
