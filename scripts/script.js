@@ -39,6 +39,9 @@ const addBtn = profile.querySelector('.add-btn');
 const closeBtn = popupContainer.querySelector('.profile-edit__close-btn');
 const closeBtnCard = popupContainer.querySelector('.add-card__close-btn');
 const places = document.querySelector('.places');
+const inputCard = popupContainer.querySelector('#placeCard');
+const inputUrl = popupContainer.querySelector('#placeUrl');
+const createBtn = popupContainer.querySelector('.add-card__save-btn');
 
 //Начальный рендеринг
 const createCard = (cardInfo) => {
@@ -64,6 +67,12 @@ const createCard = (cardInfo) => {
   deleteBtn.addEventListener('click', () => {
     card.remove();
   });
+
+  //Кнопка лайк
+  const likeBtn = container.querySelector('.like-btn');
+  likeBtn.addEventListener('click', () => {
+    likeBtn.classList.toggle('like-btn_status_active');
+  })
 
   return container.firstElementChild;
 
@@ -127,15 +136,24 @@ closeBtnCard.addEventListener('click', () => {
   addCard.classList.remove('add-card_opened');
 });
 
-//Реализация кнопки like
-const likeBtn = document.querySelectorAll('.like-btn');
-const likeArray =  Array.from(likeBtn);
+//Добавление карточки
+createBtn.addEventListener('click', () => {
+  const newCard = [];
+  newCard.name = inputCard.value;
+  newCard.link = inputUrl.value;
+  initialCard(newCard);
+  popupMenuClose();
+  addCard.classList.remove('add-card_opened');
+  inputCard.value = '';
+  inputUrl.value = '';
 
-likeArray.forEach( (item) => {
-  item.addEventListener('click', (evt) => {
-    evt.target.classList.toggle('like-btn_status_active');
-  });
-});
+})
+
+
+
+
+
+
 
 
 

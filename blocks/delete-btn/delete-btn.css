@@ -9,4 +9,10 @@
   position: absolute;
   top: 20px;
   right: 20px;
+  transition: 0.3s;
+}
+
+.delete-btn:hover {
+  opacity: 0.5;
+  cursor: pointer;
 }
