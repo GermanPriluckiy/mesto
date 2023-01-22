@@ -34,23 +34,55 @@ const inputJob = popupContainer.querySelector('#job');
 const editBtn = profile.querySelector('.profile__edit-btn');
 const popup = document.querySelector('.popup');
 const closeBtn = popupContainer.querySelector('.profile-edit__close-btn');
-const likeBtn = document.querySelectorAll('.like-btn');
-const likeArray =  Array.from(likeBtn);
+const places = document.querySelector('.places');
 
-//Открытие редактирования
-function popupMenuOpen() {
-  popup.classList.add('popup_opened');
-  inputName.value = profileName.textContent;
-  inputJob.value = profileJob.textContent;
+//Начальный рендеринг
+const createCard = (cardInfo) => {
+  const template = `
+  <div class="places__card">
+    <div class="places__card-photo"></div>
+    <div class="places__card-footer">
+      <h2 class="places__card-title"></h2>
+      <button class="like-btn" type="button"></button>
+    </div>
+  </div>
+ `;
+
+  const container = document.createElement('div');
+  container.innerHTML = template;
+  container.querySelector('.places__card-title').textContent = cardInfo.name;
+  container.querySelector('.places__card-photo').style.backgroundImage = `url(${cardInfo.link})`;
+  return container.firstElementChild;
+
+};
+
+const addCard = (cardInfo) => {
+  places.prepend(createCard(cardInfo));
 }
 
-editBtn.addEventListener('click', popupMenuOpen);
+initialCards.forEach( (item) => {
+  addCard(item);
+});
 
-//Закрытие редактирования
+
+//Открытие popup
+function popupMenuOpen() {
+  popup.classList.add('popup_opened');
+
+}
+//Открытие формы редактирования
+editBtn.addEventListener('click', () => {
+  popupMenuOpen();
+  inputName.value = profileName.textContent;
+  inputJob.value = profileJob.textContent;
+});
+
+//Закрытие popup
 function popupMenuClose() {
   popup.classList.remove('popup_opened');
 }
 
+//Закрытие формы редактирования
 closeBtn.addEventListener('click', popupMenuClose);
 
 //Сохранение профиля
@@ -64,6 +96,9 @@ function handleFormSubmit (evt) {
 popupContainer.addEventListener('submit', handleFormSubmit);
 
 //Реализация кнопки like
+const likeBtn = document.querySelectorAll('.like-btn');
+const likeArray =  Array.from(likeBtn);
+
 likeArray.forEach( (item) => {
   item.addEventListener('click', (evt) => {
     evt.target.classList.toggle('like-btn_status_active');

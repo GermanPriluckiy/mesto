@@ -24,48 +24,7 @@
     <button class="add-btn" type="button"></button>
     </section>
     <section class="places">
-      <div class="places__card">
-        <img class="places__card-photo" src="./images/karachaevsk.jpg" alt="Фотография Карачаевска">
-        <div class="places__card-footer">
-          <h2 class="places__card-title">Карачаевск</h2>
-          <button class="like-btn" type="button"></button>
-        </div>
-      </div>
-      <div class="places__card">
-        <img class="places__card-photo" src="./images/elbrus.png" alt="Фотография Эльбруса">
-        <div class="places__card-footer">
-          <h2 class="places__card-title">Гора Эльбрус</h2>
-          <button class="like-btn" type="button"></button>
-        </div>
-      </div>
-      <div class="places__card">
-        <img class="places__card-photo" src="./images/dombai.png" alt="Фотография Домбая">
-        <div class="places__card-footer">
-          <h2 class="places__card-title">Домбай</h2>
-          <button class="like-btn" type="button"></button>
-        </div>
-      </div>
-      <div class="places__card">
-        <img class="places__card-photo" src="./images/elbrus.png" alt="Фотография Эльбруса">
-        <div class="places__card-footer">
-          <h2 class="places__card-title">Гора Эльбрус</h2>
-          <button class="like-btn" type="button"></button>
-        </div>
-      </div>
-      <div class="places__card">
-        <img class="places__card-photo" src="./images/dombai.png" alt="Фотография Домбая">
-        <div class="places__card-footer">
-          <h2 class="places__card-title">Домбай</h2>
-          <button class="like-btn" type="button"></button>
-        </div>
-      </div>
-      <div class="places__card">
-        <img class="places__card-photo" src="./images/karachaevsk.jpg" alt="Фотография Карачаевска">
-        <div class="places__card-footer">
-          <h2 class="places__card-title">Карачаево-Черкессия</h2>
-          <button class="like-btn" type="button" id="like-btn"></button>
-        </div>
-      </div>
+
     </section>
   </main>
     <footer class="footer">
@@ -82,6 +41,15 @@
         </form>
     </div>
   </div>
+  <template id="card-template">
+    <div class="places__card">
+      <div class="places__card-photo"></div>
+      <div class="places__card-footer">
+        <h2 class="places__card-title"></h2>
+        <button class="like-btn" type="button"></button>
+      </div>
+    </div>
+  </template>
 <script src="./scripts/script.js"></script>
 </body>
 </html>
