@@ -29,4 +29,11 @@
 @import url(../blocks/profile-edit/__save-btn/profile-edit__save-btn.css);
 @import url(../blocks/profile-edit/__title/profile-edit__title.css);
 @import url(../blocks/delete-btn/delete-btn.css);
+@import url(../blocks/profile-edit/_opened/profile-edit_opened.css);
+@import url(../blocks/add-card/add-card.css);
+@import url(../blocks/add-card/__close-btn/add-card__close-btn.css);
+@import url(../blocks/add-card/__input/add-card__input.css);
+@import url(../blocks/add-card/__save-btn/add-card__save-btn.css);
+@import url(../blocks/add-card/__title/add-card__title.css);
+@import url(../blocks/add-card/_opened/add-card_opened.css);
 

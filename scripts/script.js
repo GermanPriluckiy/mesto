@@ -33,7 +33,11 @@ const inputName = popupContainer.querySelector('#name');
 const inputJob = popupContainer.querySelector('#job');
 const editBtn = profile.querySelector('.profile__edit-btn');
 const popup = document.querySelector('.popup');
+const profileEdit = popup.querySelector('.profile-edit');
+const addCard = popup.querySelector('.add-card');
+const addBtn = profile.querySelector('.add-btn');
 const closeBtn = popupContainer.querySelector('.profile-edit__close-btn');
+const closeBtnCard = popupContainer.querySelector('.add-card__close-btn');
 const places = document.querySelector('.places');
 
 //Начальный рендеринг
@@ -55,6 +59,7 @@ const createCard = (cardInfo) => {
   container.querySelector('.places__card-photo').style.backgroundImage = `url(${cardInfo.link})`;
   const card = container.firstElementChild;
 
+  //Кнопка удаления
   const deleteBtn = container.querySelector('.delete-btn');
   deleteBtn.addEventListener('click', () => {
     card.remove();
@@ -64,12 +69,12 @@ const createCard = (cardInfo) => {
 
 };
 
-const addCard = (cardInfo) => {
+const initialCard = (cardInfo) => {
   places.prepend(createCard(cardInfo));
 }
 
 initialCards.forEach( (item) => {
-  addCard(item);
+  initialCard(item);
 });
 
 
@@ -78,20 +83,26 @@ function popupMenuOpen() {
   popup.classList.add('popup_opened');
 
 }
-//Открытие формы редактирования
-editBtn.addEventListener('click', () => {
-  popupMenuOpen();
-  inputName.value = profileName.textContent;
-  inputJob.value = profileJob.textContent;
-});
 
 //Закрытие popup
 function popupMenuClose() {
   popup.classList.remove('popup_opened');
 }
 
+//Открытие формы редактирования
+editBtn.addEventListener('click', () => {
+  popupMenuOpen();
+  inputName.value = profileName.textContent;
+  inputJob.value = profileJob.textContent;
+  profileEdit.classList.add('profile-edit_opened');
+
+});
+
 //Закрытие формы редактирования
-closeBtn.addEventListener('click', popupMenuClose);
+closeBtn.addEventListener('click', () => {
+  popupMenuClose();
+  profileEdit.classList.remove('profile-edit_opened');
+});
 
 //Сохранение профиля
 function handleFormSubmit (evt) {
@@ -99,9 +110,22 @@ function handleFormSubmit (evt) {
   profileName.textContent = inputName.value;
   profileJob.textContent = inputJob.value;
   popupMenuClose();
+  profileEdit.classList.remove('profile-edit_opened');
 }
 
 popupContainer.addEventListener('submit', handleFormSubmit);
+
+//Открытие формы добавления карточки
+addBtn.addEventListener('click', () => {
+  popupMenuOpen();
+  addCard.classList.add('add-card_opened');
+});
+
+//Закрытие формы добавления
+closeBtnCard.addEventListener('click', () => {
+  popupMenuClose();
+  addCard.classList.remove('add-card_opened');
+});
 
 //Реализация кнопки like
 const likeBtn = document.querySelectorAll('.like-btn');
