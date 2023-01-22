@@ -1,11 +1,12 @@
 .profile-edit {
   margin: 0;
   padding: 0;
-  display: flex;
+  display: none;
   flex-direction: column;
   position: relative;
   border-radius: 10px;
   background-color: white;
   grid-row: 2;
+
 }
 

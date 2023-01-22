@@ -45,6 +45,7 @@ const createCard = (cardInfo) => {
       <h2 class="places__card-title"></h2>
       <button class="like-btn" type="button"></button>
     </div>
+    <button class="delete-btn" type="button"></button>
   </div>
  `;
 
@@ -52,6 +53,13 @@ const createCard = (cardInfo) => {
   container.innerHTML = template;
   container.querySelector('.places__card-title').textContent = cardInfo.name;
   container.querySelector('.places__card-photo').style.backgroundImage = `url(${cardInfo.link})`;
+  const card = container.firstElementChild;
+
+  const deleteBtn = container.querySelector('.delete-btn');
+  deleteBtn.addEventListener('click', () => {
+    card.remove();
+  });
+
   return container.firstElementChild;
 
 };
@@ -104,6 +112,7 @@ likeArray.forEach( (item) => {
     evt.target.classList.toggle('like-btn_status_active');
   });
 });
+
 
 
 
