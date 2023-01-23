@@ -36,4 +36,9 @@
 @import url(../blocks/add-card/__save-btn/add-card__save-btn.css);
 @import url(../blocks/add-card/__title/add-card__title.css);
 @import url(../blocks/add-card/_opened/add-card_opened.css);
-
+@import url(../blocks/card-view/__close-btn/card-view__close-btn.css);
+@import url(../blocks/card-view/__photo/card-view__photo.css);
+@import url(../blocks/card-view/__title/card-view__title.css);
+@import url(../blocks/card-view/card-view.css);
+@import url(../blocks/card-view/_opened/card-view_opened.css);
+@import url(../blocks/popup/__container/_opened/popup__container_opened.css);

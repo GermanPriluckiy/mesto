@@ -42,6 +42,11 @@ const places = document.querySelector('.places');
 const inputCard = popupContainer.querySelector('#placeCard');
 const inputUrl = popupContainer.querySelector('#placeUrl');
 const createBtn = popupContainer.querySelector('.add-card__save-btn');
+const viewCloseBtn = popup.querySelector('.card-view__close-btn');
+const cardView = popup.querySelector('.card-view');
+const cardViewPhoto = cardView.querySelector('.card-view__photo');
+const cardViewTitle = cardView.querySelector('.card-view__title');
+
 
 //Начальный рендеринг
 const createCard = (cardInfo) => {
@@ -74,6 +79,18 @@ const createCard = (cardInfo) => {
     likeBtn.classList.toggle('like-btn_status_active');
   })
 
+  //Просмотр фотографии
+  const photoView = container.querySelector('.places__card-photo');
+  photoView.addEventListener('click', (evt) => {
+    const eventTarget = evt.target;
+    popupMenuOpen();
+    cardView.classList.add('card-view_opened');
+    cardViewPhoto.style.backgroundImage = photoView.style.backgroundImage;
+    cardViewTitle.textContent = cardInfo.name;
+
+  })
+
+
   return container.firstElementChild;
 
 };
@@ -104,6 +121,7 @@ editBtn.addEventListener('click', () => {
   inputName.value = profileName.textContent;
   inputJob.value = profileJob.textContent;
   profileEdit.classList.add('profile-edit_opened');
+  popupContainer.classList.add('popup__container_opened');
 
 });
 
@@ -111,6 +129,7 @@ editBtn.addEventListener('click', () => {
 closeBtn.addEventListener('click', () => {
   popupMenuClose();
   profileEdit.classList.remove('profile-edit_opened');
+  popupContainer.classList.remove('popup__container_opened');
 });
 
 //Сохранение профиля
@@ -120,36 +139,48 @@ function handleFormSubmit (evt) {
   profileJob.textContent = inputJob.value;
   popupMenuClose();
   profileEdit.classList.remove('profile-edit_opened');
+  popupContainer.classList.remove('popup__container_opened');
 }
 
-popupContainer.addEventListener('submit', handleFormSubmit);
+profileEdit.addEventListener('submit', handleFormSubmit);
 
 //Открытие формы добавления карточки
 addBtn.addEventListener('click', () => {
   popupMenuOpen();
   addCard.classList.add('add-card_opened');
+  popupContainer.classList.add('popup__container_opened');
 });
 
 //Закрытие формы добавления
 closeBtnCard.addEventListener('click', () => {
   popupMenuClose();
   addCard.classList.remove('add-card_opened');
+  popupContainer.classList.remove('popup__container_opened');
 });
 
 //Добавление карточки
-createBtn.addEventListener('click', () => {
+function addFormSubmit (evt) {
+  evt.preventDefault();
   const newCard = [];
   newCard.name = inputCard.value;
   newCard.link = inputUrl.value;
   initialCard(newCard);
   popupMenuClose();
   addCard.classList.remove('add-card_opened');
+  popupContainer.classList.remove('popup__container_opened');
   inputCard.value = '';
   inputUrl.value = '';
 
-})
 
+}
 
+addCard.addEventListener('submit', addFormSubmit);
+
+//Закрытие просмотра
+viewCloseBtn.addEventListener('click', () => {
+  cardView.classList.remove('card-view_opened');
+  popupMenuClose();
+});
 
 
 

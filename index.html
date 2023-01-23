@@ -43,20 +43,16 @@
           <h2 class="add-card__title">Новое место</h2>
           <input type="text" lang="ru" name="cardPlaceInput" placeholder="Название" id="placeCard" class="add-card__input">
           <input type="text" lang="ru" name="cardUrlInput" placeholder="Ссылка на картинку" id="placeUrl" class="add-card__input">
-          <button class="add-card__save-btn" type="button">Создать</button>
+          <button class="add-card__save-btn" type="submit">Создать</button>
           <button class="add-card__close-btn" type="button"></button>
-      </form>
-    </div>
-  </div>
-  <template id="card-template">
-    <div class="places__card">
-      <div class="places__card-photo"></div>
-      <div class="places__card-footer">
-        <h2 class="places__card-title"></h2>
-        <button class="like-btn" type="button"></button>
+        </form>
       </div>
-    </div>
-  </template>
-<script src="./scripts/script.js"></script>
+      <div class="card-view">
+        <div class="card-view__photo"></div>
+        <h2 class="card-view__title"></h2>
+        <button class="card-view__close-btn" type="button"></button>
+      </div>
+  </div>
+  <script src="./scripts/script.js"></script>
 </body>
 </html>
