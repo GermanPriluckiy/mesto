@@ -52,7 +52,7 @@ const cardViewTitle = cardView.querySelector('.card-view__title');
 const createCard = (cardInfo) => {
   const template = `
   <div class="places__card">
-    <div class="places__card-photo"></div>
+    <img class="places__card-photo">
     <div class="places__card-footer">
       <h2 class="places__card-title"></h2>
       <button class="like-btn" type="button"></button>
@@ -64,7 +64,8 @@ const createCard = (cardInfo) => {
   const container = document.createElement('div');
   container.innerHTML = template;
   container.querySelector('.places__card-title').textContent = cardInfo.name;
-  container.querySelector('.places__card-photo').style.backgroundImage = `url(${cardInfo.link})`;
+  container.querySelector('.places__card-photo').src = cardInfo.link;
+  container.querySelector('.places__card-photo').alt = cardInfo.name;
   const card = container.firstElementChild;
 
   //Кнопка удаления
@@ -85,7 +86,7 @@ const createCard = (cardInfo) => {
     const eventTarget = evt.target;
     popupMenuOpen();
     cardView.classList.add('card-view_opened');
-    cardViewPhoto.style.backgroundImage = photoView.style.backgroundImage;
+    cardViewPhoto.src = cardInfo.link;
     cardViewTitle.textContent = cardInfo.name;
 
   })

@@ -1,3 +1,6 @@
 .card-view_opened {
-  display: block;
+  visibility: visible;
+  transition: visibility 0.5s, opacity 0.5s ease;
+  opacity: 1;
+
 }
