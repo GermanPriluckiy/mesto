@@ -21,24 +21,21 @@
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 @import url(../blocks/profile/__container/profile__container.css);
 @import url(../blocks/popup/popup.css);
-@import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
+@import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/profile-edit/profile-edit.css);
 @import url(../blocks/profile-edit/__close-btn/profile-edit__close-btn.css);
 @import url(../blocks/profile-edit/__input/profile-edit__input.css);
 @import url(../blocks/profile-edit/__save-btn/profile-edit__save-btn.css);
 @import url(../blocks/profile-edit/__title/profile-edit__title.css);
 @import url(../blocks/delete-btn/delete-btn.css);
-@import url(../blocks/profile-edit/_opened/profile-edit_opened.css);
 @import url(../blocks/add-card/add-card.css);
 @import url(../blocks/add-card/__close-btn/add-card__close-btn.css);
 @import url(../blocks/add-card/__input/add-card__input.css);
 @import url(../blocks/add-card/__save-btn/add-card__save-btn.css);
 @import url(../blocks/add-card/__title/add-card__title.css);
-@import url(../blocks/add-card/_opened/add-card_opened.css);
 @import url(../blocks/card-view/__close-btn/card-view__close-btn.css);
 @import url(../blocks/card-view/__photo/card-view__photo.css);
 @import url(../blocks/card-view/__title/card-view__title.css);
 @import url(../blocks/card-view/card-view.css);
-@import url(../blocks/card-view/_opened/card-view_opened.css);
-@import url(../blocks/popup/__container/_opened/popup__container_opened.css);
+
