@@ -4,6 +4,8 @@
   background-size: cover;
   background-repeat: no-repeat;
   height: 282px;
+  min-height: 282px;
+
 }
 
 .places__card-photo:hover {
