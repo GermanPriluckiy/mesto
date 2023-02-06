@@ -32,10 +32,29 @@
     </footer>
     <div class="popup" id="popup-profile-edit">
       <div class="popup__container">
-        <form class="popup__form" id="profile-edit" name="editForm" method="post">
+        <form class="popup__form" id="profile-edit" name="editForm" method="post" novalidate>
             <h2 class="popup__form-title">Редактировать профиль</h2>
-            <input type="text" lang="ru" name="nameInput" placeholder="Имя" id="input-name" class="popup__input">
-            <input type="text" lang="ru" name="jobInput" placeholder="О себе" id="input-job" class="popup__input">
+            <input
+              type="text"
+              lang="ru"
+              name="nameInput"
+              placeholder="Имя"
+              id="input-name"
+              class="popup__input"
+              required
+              minlength="2"
+              maxlength="40" >
+            <span class="popup__error" id="input-name-error"></span>
+            <input type="text"
+              lang="ru"
+              name="jobInput"
+              placeholder="О себе"
+              id="input-job"
+              class="popup__input"
+              required
+              minlength="2"
+              maxlength="200">
+            <span class="popup__error" id="input-job-error"></span>
             <button class="popup__button" type="submit">Сохранить</button>
             <button class="popup__button-close" id="edit-button-close" type="button"></button>
         </form>
@@ -43,10 +62,27 @@
     </div>
     <div class="popup" id="popup-add-card">
       <div class="popup__container">
-        <form class="popup__form" id="add-card" name="addForm" method="post">
+        <form class="popup__form" id="add-card" name="addForm" method="post" novalidate>
           <h2 class="popup__form-title">Новое место</h2>
-          <input type="text" lang="ru" name="cardPlaceInput" placeholder="Название" id="input-place" class="popup__input">
-          <input type="text" lang="ru" name="cardUrlInput" placeholder="Ссылка на картинку" id="input-url" class="popup__input">
+          <input type="text"
+            lang="ru"
+            name="cardPlaceInput"
+            placeholder="Название"
+            id="input-place"
+            class="popup__input"
+            required
+            minlength="2"
+            maxlength="30">
+          <span class="popup__error" id="input-place-error"></span>
+          <input
+            type="url"
+            lang="ru"
+            name="cardUrlInput"
+            placeholder="Ссылка на картинку"
+            id="input-url"
+            class="popup__input"
+            required>
+          <span class="popup__error" id="input-url-error"></span>
           <button class="popup__button" type="submit">Создать</button>
           <button class="popup__button-close" id="add-card-button-close" type="button"></button>
         </form>
@@ -71,5 +107,6 @@
     </template>
   <script src="./scripts/initial.js"></script>
   <script src="./scripts/script.js"></script>
-</body>
+  <script src="./scripts/validate.js"></script>
+  </body>
 </html>

@@ -115,6 +115,8 @@ btnAddNewCard.addEventListener('click', () => {
 //Закрытие формы добавления
 btnCloseCard.addEventListener('click', () => {
   closePopup(popupAddCard);
+  inputCard.value = '';
+  inputUrl.value = '';
 
 });
 
