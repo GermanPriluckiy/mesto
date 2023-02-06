@@ -1,5 +1,3 @@
-
-
 const profile = document.querySelector('.profile');
 const profileName = profile.querySelector('.profile__name');
 const profileJob = profile.querySelector('.profile__job');
@@ -13,16 +11,16 @@ const cardViewPhoto = cardView.querySelector('.card-view__photo');
 const cardViewTitle = cardView.querySelector('.card-view__title');
 
 const popupProfileEdit = document.querySelector('#popup-profile-edit');
-const profileEdit = popupProfileEdit.querySelector('.profile-edit');
-const btnCloseProfileEdit = popupProfileEdit.querySelector('.profile-edit__close-btn');
-const inputName = popupProfileEdit.querySelector('#name');
-const inputJob = popupProfileEdit.querySelector('#job');
+const profileEdit = popupProfileEdit.querySelector('#profile-edit');
+const btnCloseProfileEdit = popupProfileEdit.querySelector('#edit-button-close');
+const inputName = popupProfileEdit.querySelector('#input-name');
+const inputJob = popupProfileEdit.querySelector('#input-job');
 
 const popupAddCard = document.querySelector('#popup-add-card');
-const addCard = popupAddCard.querySelector('.add-card');
-const btnCloseCard = addCard.querySelector('.add-card__close-btn');
-const inputCard = addCard.querySelector('#placeCard');
-const inputUrl = addCard.querySelector('#placeUrl');
+const formPopupCard = popupAddCard.querySelector('#add-card');
+const btnCloseCard = formPopupCard.querySelector('#add-card-button-close');
+const inputCard = formPopupCard.querySelector('#input-place');
+const inputUrl = formPopupCard.querySelector('#input-url');
 
 const places = document.querySelector('.places');
 
@@ -133,7 +131,7 @@ function addFormSubmit (evt) {
 
 }
 
-addCard.addEventListener('submit', addFormSubmit);
+formPopupCard.addEventListener('submit', addFormSubmit);
 
 /*Закрытие просмотра*/
 btnViewClose.addEventListener('click', () => {

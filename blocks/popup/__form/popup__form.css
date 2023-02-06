@@ -1,4 +1,4 @@
-.profile-edit {
+.popup__form {
   margin: 0;
   padding: 0;
   display: flex;
@@ -9,4 +9,3 @@
   grid-row: 2;
 
 }
-
