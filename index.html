@@ -55,7 +55,7 @@
               minlength="2"
               maxlength="200">
             <span class="popup__error" id="input-job-error"></span>
-            <button class="popup__button" type="submit">Сохранить</button>
+            <button class="popup__button" type="submit" id="edit-button-save">Сохранить</button>
             <button class="popup__button-close" id="edit-button-close" type="button"></button>
         </form>
       </div>
@@ -83,7 +83,7 @@
             class="popup__input"
             required>
           <span class="popup__error" id="input-url-error"></span>
-          <button class="popup__button" type="submit">Создать</button>
+          <button class="popup__button" type="submit" disabled>Создать</button>
           <button class="popup__button-close" id="add-card-button-close" type="button"></button>
         </form>
       </div>
@@ -106,7 +106,7 @@
       </div>
     </template>
   <script src="./scripts/initial.js"></script>
-  <script src="./scripts/script.js"></script>
   <script src="./scripts/validate.js"></script>
+  <script src="./scripts/script.js"></script>
   </body>
 </html>

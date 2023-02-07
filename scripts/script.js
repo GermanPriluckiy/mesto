@@ -15,6 +15,7 @@ const profileEdit = popupProfileEdit.querySelector('#profile-edit');
 const btnCloseProfileEdit = popupProfileEdit.querySelector('#edit-button-close');
 const inputName = popupProfileEdit.querySelector('#input-name');
 const inputJob = popupProfileEdit.querySelector('#input-job');
+const btnSaveEdit = profileEdit.querySelector('#edit-button-save');
 
 const popupAddCard = document.querySelector('#popup-add-card');
 const formPopupCard = popupAddCard.querySelector('#add-card');
@@ -23,6 +24,26 @@ const inputCard = formPopupCard.querySelector('#input-place');
 const inputUrl = formPopupCard.querySelector('#input-url');
 
 const places = document.querySelector('.places');
+const popupList = Array.from(document.querySelectorAll('.popup'));
+
+//Закрытие popup кликом на overlay
+popupList.forEach( (popupElement) => {
+
+  popupElement.addEventListener('click', (evt) => {
+    if (evt.target.classList.contains('popup')) {
+      closePopup(popupElement);
+    }
+  });
+});
+
+//Закрытие popup клавишей Escape
+document.addEventListener('keydown', (evt) => {
+  if (evt.key === 'Escape') {
+    const popupOpen = document.querySelector('.popup_opened');
+    closePopup(popupOpen);
+  }
+});
+
 
 //Начальный рендеринг
 const createCard = (cardInfo) => {
@@ -86,6 +107,8 @@ btnProfileEdit.addEventListener('click', () => {
   openPopup(popupProfileEdit);
   inputName.value = profileName.textContent;
   inputJob.value = profileJob.textContent;
+  btnSaveEdit.disabled = false;
+  btnSaveEdit.classList.remove('popup__button_disabled');
 
 });
 

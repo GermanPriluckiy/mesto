@@ -57,12 +57,10 @@ function toggleButton (formElement, config) {
 
   buttonSubmit.disabled = !isFormValid;
   buttonSubmit.classList.toggle(config.inactiveButtonClass, !isFormValid);
-  console.log(buttonSubmit.disabled);
+
 
   }
 
-
-
-
-
 enableValidation(validationConfig);
+
+
