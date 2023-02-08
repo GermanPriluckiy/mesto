@@ -9,7 +9,7 @@ const validationConfig = {
 
 //Функция валидации
 function enableValidation(config) {
-  const formList = Array.from(document.querySelectorAll(validationConfig.formSelector));
+  const formList = Array.from(document.querySelectorAll(config.formSelector));
 
   formList.forEach((formElement) => {
     addInputListeners(formElement, config);
