@@ -24,14 +24,7 @@ const buttonAddCard = popupAddCard.querySelector('#add-card-button-save');
 const places = document.querySelector('.places');
 const popupList = Array.from(document.querySelectorAll('.popup'));
 
-//Закрытие popup клавишей Escape
-document.addEventListener('keydown', (evt) => {
-  if (evt.key === 'Escape') {
-    const popupOpen = document.querySelector('.popup_opened');
-    closePopup(popupOpen);
-  }
-});
-
+//Закрытие клавишей
 function closeByEscape(evt) {
   if (evt.key === 'Escape') {
     const popupOpen = document.querySelector('.popup_opened');
@@ -86,14 +79,14 @@ initialCards.forEach( (item) => {
 //Открытие popup
 function openPopup(popup) {
   popup.classList.add('popup_opened');
-  popup.addEventListener('keydown', closeByEscape);
+  document.addEventListener('keydown', closeByEscape);
 
 }
 
 //Закрытие popup
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
-  popup.removeEventListener('keydown', closeByEscape);
+  document.removeEventListener('keydown', closeByEscape);
 }
 
 //Открытие формы редактирования
