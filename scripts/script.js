@@ -1,13 +1,10 @@
+import Card from "./Card.js";
+
 const profile = document.querySelector('.profile');
 const profileName = profile.querySelector('.profile__name');
 const profileJob = profile.querySelector('.profile__job');
 const btnProfileEdit = profile.querySelector('.profile__edit-btn');
 const btnAddNewCard = profile.querySelector('.add-btn');
-
-const popupCardView = document.querySelector('#popup-card-view');
-const cardView = popupCardView.querySelector('.card-view');
-const cardViewPhoto = cardView.querySelector('.card-view__photo');
-const cardViewTitle = cardView.querySelector('.card-view__title');
 
 const popupProfileEdit = document.querySelector('#popup-profile-edit');
 const profileEdit = popupProfileEdit.querySelector('#profile-edit');
@@ -24,56 +21,11 @@ const buttonAddCard = popupAddCard.querySelector('#add-card-button-save');
 const places = document.querySelector('.places');
 const popupList = Array.from(document.querySelectorAll('.popup'));
 
-//Закрытие клавишей
-function closeByEscape(evt) {
-  if (evt.key === 'Escape') {
-    const popupOpen = document.querySelector('.popup_opened');
-    closePopup(popupOpen);
-  }
-}
-
 //Начальный рендеринг
-const createCard = (cardInfo) => {
-  const templateCard = document.querySelector('#template-card').content;
-  const card = templateCard.querySelector('.places__card').cloneNode(true);
-
-  card.querySelector('.places__card-title').textContent = cardInfo.name;
-  card.querySelector('.places__card-photo').src = cardInfo.link;
-  card.querySelector('.places__card-photo').alt = cardInfo.name;
-
-
-  //Кнопка удаления
-  const deleteBtn = card.querySelector('.delete-btn');
-  deleteBtn.addEventListener('click', () => {
-    card.remove();
-  });
-
-  //Кнопка лайк
-  const likeBtn = card.querySelector('.like-btn');
-  likeBtn.addEventListener('click', () => {
-    likeBtn.classList.toggle('like-btn_status_active');
-  })
-
-  //Просмотр фотографии
-  const photoView = card.querySelector('.places__card-photo');
-  photoView.addEventListener('click', (evt) => {
-    openPopup(popupCardView);
-    cardViewPhoto.src = cardInfo.link;
-    cardViewTitle.textContent = cardInfo.name;
-    cardViewPhoto.alt = cardInfo.name;
-
-  });
-
-  return card;
-
-};
-
-const renderCard = (cardInfo) => {
-  places.prepend(createCard(cardInfo));
-}
-
 initialCards.forEach( (item) => {
-  renderCard(item);
+  const card = new Card(item, '#template-card');
+  const cardElement = card.generateCard();
+  places.prepend(cardElement);
 });
 
 //Открытие popup
@@ -87,9 +39,10 @@ function openPopup(popup) {
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
   document.removeEventListener('keydown', closeByEscape);
+
 }
 
-//Открытие формы редактирования
+//Открытие профиля
 btnProfileEdit.addEventListener('click', () => {
   openPopup(popupProfileEdit);
   inputName.value = profileName.textContent;
@@ -110,15 +63,26 @@ function handleFormSubmit (evt) {
 
 profileEdit.addEventListener('submit', handleFormSubmit);
 
+//Закрытие клавишей
+function closeByEscape(evt) {
+  if (evt.key === 'Escape') {
+    const popupOpen = document.querySelector('.popup_opened');
+    closePopup(popupOpen);
+  }
+}
+
+
+
+
 //Открытие формы добавления карточки
 btnAddNewCard.addEventListener('click', (evt) => {
   openPopup(popupAddCard);
-  const isFormValid = formPopupCard.checkValidity();
+  //const isFormValid = formPopupCard.checkValidity();
   inputCard.value = '';
   inputUrl.value = '';
 
-  buttonAddCard.disabled = !isFormValid;
-  buttonAddCard.classList.toggle('popup__button_disabled', !isFormValid);
+  /*buttonAddCard.disabled = !isFormValid;
+  buttonAddCard.classList.toggle('popup__button_disabled', !isFormValid);*/
 
 });
 
@@ -126,10 +90,12 @@ btnAddNewCard.addEventListener('click', (evt) => {
 //Добавление карточки
 function addFormSubmit (evt) {
   evt.preventDefault();
-  const newCard = [];
-  newCard.name = inputCard.value;
-  newCard.link = inputUrl.value;
-  renderCard(newCard);
+  const cardInfo = [];
+  cardInfo.name = inputCard.value;
+  cardInfo.link = inputUrl.value;
+  const newCard = new Card(cardInfo, '#template-card');
+  const newCardElement = newCard.generateCard();
+  places.prepend(newCardElement);
   closePopup(popupAddCard);
   inputCard.value = '';
   inputUrl.value = '';
