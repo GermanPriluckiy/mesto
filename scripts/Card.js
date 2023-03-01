@@ -1,5 +1,5 @@
 class Card {
-  constructor (data, templateSelector) {
+  constructor(data, templateSelector) {
     this._name = data.name;
     this._link = data.link;
     this._templateSelector = templateSelector;
@@ -19,7 +19,9 @@ class Card {
     document.querySelector('#popup-card-view').classList.toggle('popup_opened');
     this._fillCard(this._name, this._link);
 
+
   }
+
   //Заполнение popup просмотра
   _fillCard(name, link) {
     const cardView = document.querySelector('.card-view')
@@ -51,7 +53,6 @@ class Card {
   //Создание карточки
   generateCard() {
     this._element = this._getTemplate();
-
     this._element.querySelector('.places__card-title').textContent = this._name;
     this._element.querySelector('.places__card-photo').src = this._link;
     this._element.querySelector('.places__card-photo').alt = this._name;
