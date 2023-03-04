@@ -13,7 +13,7 @@
 
 }
 
-.popup__button:hover {
+.popup__button:not([disabled]):hover {
   opacity: 0.8;
   cursor: pointer;
 }
