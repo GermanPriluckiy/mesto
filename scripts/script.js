@@ -49,8 +49,6 @@ function openPopup(popup) {
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
   document.removeEventListener('keydown', closeByEscape);
-  profileEditValidation.resetInputError();
-  profileEditValidation.removeСlassOnExit();
 
 }
 //Открытие просмотра картинки
@@ -66,7 +64,8 @@ btnProfileEdit.addEventListener('click', () => {
   openPopup(popupProfileEdit);
   inputName.value = profileName.textContent;
   inputJob.value = profileJob.textContent;
-  profileEditValidation.enableButton();
+  profileEditValidation.toggleButton();
+  profileEditValidation.removeError();
 
 });
 
@@ -100,12 +99,10 @@ btnAddNewCard.addEventListener('click', (evt) => {
 //Добавление карточки
 function addFormSubmit(evt) {
   evt.preventDefault();
-  const cardInfo = [];
+  const cardInfo = {};
   cardInfo.name = inputCard.value;
   cardInfo.link = inputUrl.value;
-  const newCard = new Card(cardInfo, '#template-card');
-  const newCardElement = newCard.generateCard();
-  places.prepend(newCardElement);
+  places.prepend(createCard(cardInfo, '#template-card'));
   closePopup(popupAddCard);
   inputCard.value = '';
   inputUrl.value = '';

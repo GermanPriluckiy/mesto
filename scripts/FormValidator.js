@@ -9,48 +9,38 @@ class FormValidator {
     this._form = form;
     this._inputList = Array.from(this._form.querySelectorAll(this._inputSelector));
     this._buttonSubmit = this._form.querySelector(this._submitButtonSelector);
-    this._errorClassList = Array.from(this._form.querySelectorAll(this._errorClass));
 
   }
   //Снятие класса ошибки
-  removeСlassOnExit = () => {
+  removeError = () => {
     this._inputList.forEach((input) => {
-      input.classList.remove(this._inputErrorClass);
+      this._hideErrorClass(input);
     });
   }
 
-  //Обнуление текста ошибок
-  resetInputError = () => {
-    this._errorClassList.forEach((error) => {
-      error.textContent = ' ';
-    });
-  }
-  //Включение submit
-  enableButton = () => {
-    this._buttonSubmit.disabled = false;
-    this._buttonSubmit.classList.remove(this._inactiveButtonClass);
-  }
   //Видимость ошибки
-  _showErrorClass = (input, error) => {
+  _showErrorClass = (input, errorMessage) => {
+    const inputId = input.id;
+    const errorElement = this._form.querySelector(`#${inputId}-error`);
     input.classList.add(this._inputErrorClass);
-    error.textContent = input.validationMessage;
+    errorElement.textContent = errorMessage;
 
   }
   //Скрытие ошибки
-  _hideErrorClass = (input, error) => {
+  _hideErrorClass = (input) => {
+    const inputId = input.id;
+    const errorElement = this._form.querySelector(`#${inputId}-error`);
     input.classList.remove(this._inputErrorClass);
-    error.textContent = ' ';
+    errorElement.textContent = ' ';
   }
   //Проверка валидации полей
   _handleFormInput = (input) => {
-    const inputId = input.id;
-    const errorElement = this._form.querySelector(`#${inputId}-error`);
 
     if (input.validity.valid) {
-      this._hideErrorClass(input, errorElement);
+      this._hideErrorClass(input);
 
     } else {
-      this._showErrorClass(input, errorElement);
+      this._showErrorClass(input, input.validationMessage);
 
     }
     this.toggleButton();
