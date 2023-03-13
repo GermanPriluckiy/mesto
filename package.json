@@ -1,0 +1,30 @@
+{
+  "name": "mesto",
+  "version": "0.0.1",
+  "description": "## В проекте используются: * Закрепление навыков верстки (flex, grid). * Базовые знания JavaScript (описание функций, обработчик событий). * В проектной работе 5 добавлены новые функции: добавление фотографии, просмотр фотографии, Like карточки, удаление карточки. * В проектной работе 6 добавлена валидация форм редактирования профиля и добавления новой карточки. * В проектной работе 7 произведен рефакторинг. Код строится по ООП. Реализованы классы Card  и FormValidator (создание карточки и валидация форм)",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "dev": "webpack serve"
+  },
+  "author": "German Priluckiy",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.21.0",
+    "@babel/preset-env": "^7.20.2",
+    "autoprefixer": "^10.4.14",
+    "babel-loader": "^9.1.2",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.7.3",
+    "cssnano": "^5.1.15",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.7.3",
+    "postcss-loader": "^7.0.2",
+    "webpack": "^5.76.1",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.11.1"
+  },
+  "dependencies": {
+    "core-js": "^3.29.0"
+  }
+}

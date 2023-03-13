@@ -1,7 +1,9 @@
-import Card from "./Card.js";
-import initialCards from "./initial.js";
-import FormValidator from "./FormValidator.js";
-import validationConfig from "./validationConf.js";
+import Card from "../components/Card.js";
+import Section from "../components/Section.js";
+import { initialCards ,validationConfig , cardContainerSelector, cardTemplate} from "../utils/constants.js";
+import FormValidator from "../components/FormValidator.js";
+
+import '../pages/index.css';
 
 
 const profile = document.querySelector('.profile');
@@ -22,10 +24,22 @@ const inputUrl = formAddCard.querySelector('#input-url');
 const popupCardView = document.querySelector('#popup-card-view');
 const cardView = document.querySelector('.card-view');
 
-const places = document.querySelector('.places');
+
+const cardContainer = document.querySelector(cardContainerSelector);
 const popupList = Array.from(document.querySelectorAll('.popup'));
 
-//Начальный рендеринг
+const initialCardList = new Section({
+  items : initialCards,
+  renderer: (item) => {
+    const card = new Card(item, cardTemplate, handleOpenPopup);
+    const cardElement = card.generateCard();
+    initialCardList.addItem(cardElement);
+  }
+}, cardContainerSelector);
+initialCardList.renderItems();
+
+
+/*Начальный рендеринг
 function createCard(cardItem, template) {
   const card = new Card(cardItem, template, handleOpenPopup);
   const cardElement = card.generateCard();
@@ -35,7 +49,7 @@ function createCard(cardItem, template) {
 initialCards.forEach((item) => {
   places.prepend(createCard(item, '#template-card'));
 });
-
+*/
 
 
 //Открытие popup
@@ -102,7 +116,7 @@ function addFormSubmit(evt) {
   const cardInfo = {};
   cardInfo.name = inputCard.value;
   cardInfo.link = inputUrl.value;
-  places.prepend(createCard(cardInfo, '#template-card'));
+  cardContainer.prepend(createCard(cardInfo, '#template-card'));
   closePopup(popupAddCard);
   inputCard.value = '';
   inputUrl.value = '';
