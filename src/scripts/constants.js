@@ -36,3 +36,5 @@ export const validationConfig = {
 
 export const cardContainerSelector = '.places';
 export const cardTemplate = '#template-card';
+
+export const cardView = document.querySelector('.card-view');
