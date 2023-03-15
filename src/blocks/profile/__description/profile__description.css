@@ -1,4 +1,4 @@
-.profile__job {
+.profile__description {
   padding: 0;
   margin: 0;
   max-width: 205px;
@@ -11,7 +11,7 @@
 }
 
 @media screen and (max-width: 766px) {
-  .profile__job {
+  .profile__description {
     justify-self: center;
     grid-column-start: 1;
     grid-column-end: 3;
@@ -20,7 +20,7 @@
 }
 
 @media screen and (max-width: 420px) {
-  .profile__job {
+  .profile__description {
     font-size: 14px;
 
   }

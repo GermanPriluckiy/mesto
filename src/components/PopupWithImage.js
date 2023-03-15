@@ -1,5 +1,5 @@
 import Popup from "./Popup.js";
-import { cardView } from "./constants.js";
+import { cardView } from "../constants.js";
 
 export default class PopupWithImage extends Popup {
   constructor(data, popupSelector) {

@@ -38,3 +38,22 @@ export const cardContainerSelector = '.places';
 export const cardTemplate = '#template-card';
 
 export const cardView = document.querySelector('.card-view');
+
+export const formProfileEdit = document.querySelector('#profile-edit');
+export const inputName = formProfileEdit.querySelector('#input-name');
+export const inputDescription = formProfileEdit.querySelector('#input-description');
+
+export const profile = document.querySelector('.profile');
+export const btnProfileEdit = profile.querySelector('.profile__edit-btn');
+export const btnAddNewCard = profile.querySelector('.add-btn');
+
+export const profileName = '.profile__name';
+export const profileDescription = '.profile__description';
+
+export const popupAddCard = document.querySelector('#popup-add-card');
+export const formAddCard = popupAddCard.querySelector('#add-card');
+
+export const inputCard = formAddCard.querySelector('#input-place');
+export const inputUrl = formAddCard.querySelector('#input-url');
+
+
