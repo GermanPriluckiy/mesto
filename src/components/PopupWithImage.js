@@ -1,19 +1,19 @@
 import Popup from "./Popup.js";
-import { cardView } from "../constants.js";
 
 export default class PopupWithImage extends Popup {
-  constructor(data, popupSelector) {
+  constructor(popupSelector) {
     super(popupSelector);
-    this._name = data.name;
-    this._link = data.link;
+    this._cardView = this._popup.querySelector('.card-view');
+    this._cardImage = this._cardView.querySelector('.card-view__photo');
+    this._cardTitle = this._cardView.querySelector('.card-view__title');
 
   }
 
-  open() {
+  open(data) {
     super.open();
-    cardView.querySelector('.card-view__photo').src = this._link;
-    cardView.querySelector('.card-view__photo').alt = this._name;
-    cardView.querySelector('.card-view__title').textContent = this._name;
+    this._cardImage.src = data.link;
+    this._cardImage.alt = data.name;
+    this._cardTitle.textContent = data.name;
   }
 
 }

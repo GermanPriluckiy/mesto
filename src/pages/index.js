@@ -19,27 +19,29 @@ const initialCardList = new Section({
 }, cardContainerSelector);
 initialCardList.renderItems();
 
+//Класс popup просмотра
+const popupImage = new PopupWithImage('#popup-card-view');
+popupImage.setEventListeners();
+
 //Создание карточки
 function createCard(cardItem, template) {
   const card = new Card({
     data: cardItem,
-    handleCardClick: (name, link) => {
-      const popupImage = new PopupWithImage({name, link}, '#popup-card-view');
-      popupImage.open();
-      popupImage.setEventListeners();
+    handleCardClick: () => {
+      popupImage.open(cardItem);
+
     }
   },
      template);
   const cardElement = card.generateCard();
   return cardElement;
+
 }
 //Функция добавления карточки
-function handleAddFormSubmit () {
-
-  const cardInfo = {};
-  cardInfo.name = inputCard.value;
-  cardInfo.link = inputUrl.value;
-  initialCardList.addItem(createCard(cardInfo, '#template-card'));
+function handleAddFormSubmit (cardInfo) {
+  const name = cardInfo.cardPlaceInput;
+  const link = cardInfo.cardUrlInput;
+  initialCardList.addItem(createCard({name, link}, '#template-card'));
 
 }
 
@@ -59,8 +61,8 @@ editProfilePopup.setEventListeners();
 const userInfo = new UserInfo(profileName, profileDescription);
 
 //Сохранение профиля
-function handleEditFormSubmit() {
-  userInfo.setUserInfo(inputName.value, inputDescription.value);
+function handleEditFormSubmit(newUserInfo) {
+  userInfo.setUserInfo(newUserInfo.nameInput, newUserInfo.descriptionInput);
 
 }
 
