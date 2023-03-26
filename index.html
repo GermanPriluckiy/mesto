@@ -13,7 +13,9 @@
   <main class="content">
     <section class="profile">
     <div class="profile__container">
-      <img class="profile__avatar" src="images/avatar.c15cb08ab8ecfaba54c6.jpg" alt="Фотография пользователя">
+      <div class="profile__avatar-container">
+      <img class="profile__avatar" alt="Фотография пользователя">
+      </div>
       <div class="profile__info">
         <h1 class="profile__name">Жак-Ив Кусто</h1>
         <button class="profile__edit-btn" type="button"></button>
@@ -92,6 +94,24 @@
         <img class="card-view__photo" src="''" alt=" ">
         <h2 class="card-view__title"></h2>
         <button class="popup__button-close" type="button"></button>
+      </div>
+    </div>
+    <div class="popup popup_opacity_low" id="popup-edit-avatar">
+      <div class="popup__container">
+        <form class="popup__form" id="edit-avatar" name="editAvatar" method="post" novalidate>
+          <h2 class="popup__form-title">Обновить аватар</h2>
+          <input
+          type="url"
+          lang="ru"
+          name="avatarUrlInput"
+          placeholder="Ссылка на аватар"
+          id="input-avatar-url"
+          class="popup__input"
+          required>
+          <span class="popup__error" id="input-avatar-url-error"></span>
+          <button class="popup__button" type="submit" id="edit-avatar-button-save" disabled>Сохранить</button>
+          <button class="popup__button-close" id="edit-avatar-button-close" type="button"></button>
+        </form>
       </div>
     </div>
     <template id="template-card">
