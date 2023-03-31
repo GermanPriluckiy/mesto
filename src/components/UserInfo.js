@@ -4,6 +4,7 @@ export default class UserInfo {
     this._profileName = document.querySelector(profileName);
     this._profileDescription = document.querySelector(profileDescription);
     this._profileAvatar = document.querySelector(profileAvatar);
+
   }
 
   getUserInfo() {
@@ -14,15 +15,23 @@ export default class UserInfo {
     return userInformation;
 
   }
+  setUserId(id) {
+    this._myId = id;
+    return this._myId;
+  }
 
-  setUserInfo(inputName, inputDescription) {
-    this._profileName.textContent = inputName;
-    this._profileDescription.textContent = inputDescription;
+  getUserId() {
+    return this._myId;
+  }
+
+  setUserInfo(newName, newDescription) {
+    this._profileName.textContent = newName;
+    this._profileDescription.textContent = newDescription;
 
   }
 
-  setUserAvatar(avatarLink) {
-    this._profileAvatar.src = avatarLink;
+  setUserAvatar(newAvatarLink) {
+    this._profileAvatar.src = newAvatarLink;
   }
 }
 

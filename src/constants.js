@@ -9,6 +9,7 @@ export const validationConfig = {
 
 export const cardContainerSelector = '.places';
 export const cardTemplate = '#template-card';
+export const cardTemplateWithoutDelete = '#template-card-without-delete';
 
 export const formProfileEdit = document.querySelector('#profile-edit');
 export const inputName = formProfileEdit.querySelector('#input-name');
