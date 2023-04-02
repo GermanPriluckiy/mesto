@@ -27,16 +27,11 @@ const api = new Api({
 
 //Создание класса Section
 const initialCardList = new Section({
-  renderer: (item, myId) => {
-    if (item.owner._id == myId) {
-
-      initialCardList.addItem(createCard(item, cardTemplate, true));
+  renderer: (item) => {
+      const userId = userInfo.getUserId();
+      initialCardList.addItem(createCard(item, cardTemplate, userId));
     }
-    else {
 
-      initialCardList.addItem(createCard(item, cardTemplate, false));
-    }
-  }
 }, cardContainerSelector);
 
 //Получение начальных данных
@@ -50,8 +45,8 @@ Promise.all([
     userInfo.setUserInfo(values[0].name, values[0].about);
     userInfo.setUserAvatar(values[0].avatar);
     userInfo.setUserId(values[0]._id);
-    const myId = userInfo.getUserId();
-    initialCardList.renderItems(values[1], myId);
+    initialCardList.renderItems(values[1]);
+
 
   })
 
@@ -61,7 +56,7 @@ Promise.all([
 
 
 //Функция создания карточки
-function createCard(cardItem, template, isOwner) {
+function createCard(cardItem, template, userId) {
   const card = new Card({
     data: cardItem,
     //Просмотр карточки
@@ -70,17 +65,17 @@ function createCard(cardItem, template, isOwner) {
 
     },
     //Удаление карточки
-    handleDeleteCard: (cardId) => {
-      popupDeleteCard.open(cardId, card);
+    handleDeleteCard: () => {
+      popupDeleteCard.open(card.getIdcard(), card);
 
     },
     //Like карточки
-    handleLikeCard: (likeButton, cardID, likeValue) => {
-      if (likeButton.classList.contains('like-btn_status_active')) {
-        api.dislikeCard(cardID)
+    handleLikeCard: () => {
+      if (card.isCardLike()) {
+        api.dislikeCard(card.getIdcard())
           .then(data => {
-            likeValue.textContent = data.likes.length;
-            likeButton.classList.remove('like-btn_status_active');
+            card.setLikesValue(data.likes.length);
+            card.dislikeCard();
 
           })
           .catch((err) => {
@@ -88,10 +83,10 @@ function createCard(cardItem, template, isOwner) {
           });
       }
       else {
-        api.likeCard(cardID)
+        api.likeCard(card.getIdcard())
           .then(data => {
-            likeValue.textContent = data.likes.length;
-            likeButton.classList.add('like-btn_status_active');
+            card.setLikesValue(data.likes.length);
+            card.likeCard();
 
           })
           .catch((err) => {
@@ -101,16 +96,12 @@ function createCard(cardItem, template, isOwner) {
 
     }
   },
-    template
+    template,
+    userId
   );
-  if (isOwner) {
+
     const cardElement = card.generateCard();
     return cardElement;
-  }
-  else {
-    const cardElement = card.generateCardWithoutDelete();
-    return cardElement;
-  }
 
 }
 
@@ -120,16 +111,16 @@ function handleAddFormSubmit(cardInfo) {
   const link = cardInfo.cardUrlInput;
   api.addNewCard(name, link)
     .then(data => {
-
-      initialCardList.addItem(createCard(data, cardTemplate, true));
-
+      const userId = userInfo.getUserId();
+      initialCardList.addItem(createCard(data, cardTemplate, userId));
+      addCardPopup.close();
     })
     .catch((err) => {
       console.log(err);
     })
     .finally(() => {
       addCardPopup.renderLoadingFalse('Создать');
-      addCardPopup.close();
+
     });
 
 }
@@ -156,13 +147,13 @@ function deleteCardFormSubmit(cardId, cardElement) {
     .then(data => {
       console.log(data);
       cardElement.removeCard();
-
+      popupDeleteCard.close();
     })
     .catch((err) => {
       console.log(err);
     })
     .finally(() => {
-      popupDeleteCard.close();
+
     });
 
 }
@@ -183,14 +174,14 @@ function handleEditFormSubmit(newUserInfo) {
   api.setUserInfo(newUserInfo.nameInput, newUserInfo.descriptionInput)
     .then(data => {
       userInfo.setUserInfo(data.name, data.about)
-
+      editProfilePopup.close();
     })
     .catch((err) => {
       console.log(err);
     })
     .finally(() => {
       editProfilePopup.renderLoadingFalse('Сохранить');
-      editProfilePopup.close();
+
     });
 
 }
@@ -220,13 +211,14 @@ function handleAvatarFormSubmit(link) {
   api.updateAvatar(link.avatarUrlInput)
     .then(data => {
       userInfo.setUserAvatar(data.avatar);
+      editAvatarPopup.close();
     })
     .catch((err) => {
       console.log(err);
     })
     .finally(() => {
       editAvatarPopup.renderLoadingFalse('Сохранить');
-      editAvatarPopup.close();
+
     });
 
 }
